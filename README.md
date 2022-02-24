@@ -1,16 +1,16 @@
 
 # Smart Attendace System FrontEnd (Under Development)
 
-![alt text](https://drive.google.com/uc?id=1zEDzXF3l3jr4r28tLejbo_xpynicwMQt)
+![alt text](https://github.com/nadimakhtar97/smart-attendance-system/blob/main/images/smart-attendance-system.png?raw=true)
 
 
 # Using mongo-db as database
 
-![alt text](https://drive.google.com/uc?id=1VXLXap1KrEpJTagCJAtifsJvghy0dox7)
+![alt text](https://github.com/nadimakhtar97/smart-attendance-system/blob/main/images/mongodb.png?raw=true)
 
 # Currently developed API's
 
-![alt text](https://drive.google.com/uc?id=1BpSx1NTQRejtNhiK7ix8xnlvi5OSu7dO)
+![alt text](https://github.com/nadimakhtar97/smart-attendance-system/blob/main/images/current%20apis.png?raw=true)
 
 
 # Getting Started with Create React App
