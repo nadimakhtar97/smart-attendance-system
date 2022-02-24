@@ -1,3 +1,18 @@
+
+# Smart Attendace System FrontEnd (Under Development)
+
+![alt text](https://drive.google.com/uc?id=1zEDzXF3l3jr4r28tLejbo_xpynicwMQt)
+
+
+# Using mongo-db as database
+
+![alt text](https://drive.google.com/uc?id=1VXLXap1KrEpJTagCJAtifsJvghy0dox7)
+
+# Currently developed API's
+
+![alt text](https://drive.google.com/uc?id=1BpSx1NTQRejtNhiK7ix8xnlvi5OSu7dO)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,4 +83,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# smart-attendance-system
+

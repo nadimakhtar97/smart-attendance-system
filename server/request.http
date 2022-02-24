@@ -1,0 +1,25 @@
+GET http://localhost:8000/users/login HTTP/1.1
+
+###
+
+GET http://localhost:5000/users/register HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "nadimakhtar",
+    "password": "xyzxyz"
+}
+
+###
+
+POST http://localhost:8000/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "nadimakhtar",
+    "password": "xyzxyz"
+}
