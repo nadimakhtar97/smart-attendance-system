@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from '../Main/Main.module.css';
 import WebCam from '../WebCam/WebCam';
 import StudentList from '../StudentList/StudentList';
+import {Flex, Spacer} from '@chakra-ui/react'
 
 function Main() {
   return (
-    <div className={styles.main}>
-        <WebCam></WebCam>
-        <StudentList></StudentList>
-    </div>
+    <Flex mt='150px' justifyContent='space-evenly'>
+      <WebCam/>
+      <StudentList/>
+    </Flex>
   )
 }
 

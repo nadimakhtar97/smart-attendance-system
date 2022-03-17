@@ -1,64 +1,75 @@
-import React from 'react';
-import styles from '../TeacherLogin/TeacherLogin.module.css';
-import { useFormik } from 'formik'
+import React, { useState } from 'react';
+import { Formik, Form } from 'formik'
+import FormikControl from '../FormikControl/FormikControl'
+import * as Yup from 'yup'
+import { Button, Center, Flex } from '@chakra-ui/react'
+import StudentRegisterOne from './StudentRegisterOne';
+import StudentRegisterTwo from './StudentRegisterTwo';
+import StudentRegisterThree from './StudentRegisterThree';
+import axios from 'axios';
 
-function TeacherLogin() {
+function StudentRegister() {
 
-    const formik = useFormik({
-
-        initialValues: {
-            "name": "",
-            "enrollmentNo":"",
-            "facultyNo":"",
-            "courseName":"",
-            "courseCode":"",
-            "registrationMode":""
-        },
-
-        onSubmit: values => {
-            console.log(values);
-        }
-
+    const [data, setData] = useState({
+        "name": "",
+        "rollNo":"",
+        "enrollmentNo": "",
+        "facultyNo": "",
+        "email": "",
+        "phoneNo": "",
+        "courseName": "",
+        "courseCode": "",
+        "courseTeacher": "",
+        "status": "absent"
     })
 
 
+
+    const [currentStep, setCurrentStep] = useState(0)
+
+    const makeRequest = async (formData) => {
+        try{
+            const response = await axios.post('http://localhost:8000/student/register', { "student": formData })
+            console.log(response)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+    const handleNextStep = (newData, final = false) => {
+        console.log(data)
+        setData(prev => ({ ...prev, ...newData }))
+
+        if(final){
+            makeRequest(newData)
+            return
+        }
+
+        setCurrentStep(prev => prev + 1)
+    }
+
+    const handlePrevStep = (newData) => {
+        setData(prev => ({ ...prev, ...newData }))
+        setCurrentStep(prev => prev - 1)
+    }
+
+    const step = [
+    <StudentRegisterOne next={handleNextStep} data={data} />, 
+    <StudentRegisterTwo next={handleNextStep} prev={handlePrevStep} data={data} />, 
+    <StudentRegisterThree next={handleNextStep} prev={handlePrevStep} data={data} />
+    ]
+
+    
+
+
+
+
     return (
-        <div>
-            <form className={styles.form} onSubmit={formik.handleSubmit}>
-                <label type="text" htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="enrollmentNo">Enrollment No</label>
-                <input type="text" id="enrollmentNo" name="enrollmentNo" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="facultyNo">Faculty No</label>
-                <input type="text" id="facultyNo" name="facultyNo" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="facultyNo">Student Email</label>
-                <input type="text" id="facultyNo" name="facultyNo" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="facultyNo">Student Phone No</label>
-                <input type="text" id="facultyNo" name="facultyNo" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="facultyNo">Faculty No</label>
-                <input type="text" id="facultyNo" name="facultyNo" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="courseName">Course Name</label>
-                <input type="text" id="courseName" name="courseName" onChange={formik.handleChange} value={formik.values.name}></input>
-
-                <label type="text" htmlFor="courseCode">Course Code</label>
-                <input type="text" id="courseCode" name="courseCode" onChange={formik.handleChange} value={formik.values.password}></input>
-
-                <label type="text" htmlFor="courseCode">Course Teacher Email</label>
-                <input type="text" id="courseCode" name="courseCode" onChange={formik.handleChange} value={formik.values.password}></input>
-
-                <label type="text" htmlFor="registrationMode">Mode of Registration</label>
-                <input type="text" id="registrationMode" name="registrationMode" onChange={formik.handleChange} value={formik.values.password}></input>
-
-                <button type="submit">submit</button>
-            </form>
-        </div>
+        <Center>
+            {step[currentStep]}
+        </Center>
     )
 }
 
-export default TeacherLogin
+export default StudentRegister

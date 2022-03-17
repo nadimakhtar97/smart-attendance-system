@@ -1,23 +1,42 @@
 import React from 'react';
 import styles from '../NavBar/NavBar.module.css';
 import { Link } from 'react-router-dom';
+import {
+  Flex, Heading, Text, Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  Spacer,
+  Center
+} from '@chakra-ui/react'
 
 function NavBar() {
   return (
-    <div className={styles.navBar}>
-      <span>SMART ATTENDANCE SYSTEM</span>
-      <div className={styles.links}>
-      <Link to="/">
-          <span className={styles.login}> Home </span>
+    <Flex align='baseline'>
+      <Spacer/>
+      <Spacer/>
+      <Heading color='#333'>Smart Attendance System</Heading>
+      <Spacer/>
+      <Breadcrumb separator='-'>
+        <BreadcrumbItem>
+        <Link to="/">
+          <BreadcrumbLink  isCurrentPage>Home</BreadcrumbLink>
         </Link>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
         <Link to="/teacher-login">
-          <span className={styles.login}> Teacher Login </span>
+          <BreadcrumbLink as='div'>Teacher login</BreadcrumbLink>
         </Link>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
         <Link to="/student-login">
-          <span className={styles.login}> Student Login </span>
+          <BreadcrumbLink as='div'>Student register</BreadcrumbLink>
         </Link>
-      </div>
-    </div>
+        </BreadcrumbItem>
+      </Breadcrumb>
+    </Flex>
   )
 }
 

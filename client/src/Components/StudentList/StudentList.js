@@ -1,37 +1,74 @@
-import React, { useContext } from 'react';
-import styles from '../StudentList/StudentList.module.css';
+import React, { useContext,useEffect, useState } from 'react';
+import {
+    Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
+    Th,
+    Td,
+    TableCaption,
+    Flex,
+    Heading,
+    Center,
+    Text,
+    Spacer
+} from '@chakra-ui/react'
 import { ApplicationContext } from '../Context/ApplicationContext'
+import axios from 'axios';
 
 function StudentList() {
 
-    const { students } = useContext(ApplicationContext)
-    console.log(students);
+    const {students,setStudents} = useContext(ApplicationContext)
+
+    useEffect(async() => {
+        try {
+          const ress = await axios.get('http://localhost:8000/db/init')
+          const res = await axios.get('http://localhost:8000/student/students')
+          console.log(res.data)
+          setStudents(res.data)
+        } catch (error) {
+          console.log(error)
+        }
+      },[])
+
+      console.log(students)
 
     return (
-        <div className={styles.studentList}>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
+        <Flex direction='column'>
+            <Center borderBottom='1px'>
+            <Text >Nadim Akhtar</Text>
+            <Spacer/>
+            <Text>{new Date().toLocaleString()}</Text>
+            </Center>
+            <Table colorScheme='blue.500' mt='20px'>
+                <TableCaption color='black.500' placement='bottom'>students attendance table</TableCaption>
+                <Thead>
+                    <Tr>
+                        <Th>Id</Th>
+                        <Th>Name</Th>
+                        <Th>Enrollment No</Th>
+                        <Th>faculty No</Th>
+                        <Th>Status</Th>
+                    </Tr>
+                </Thead>
 
-                <tbody>
+                <Tbody>
                     {students.map(student => {
                         return (
-                            <tr key={student.id}>
-                                <td>{student.id}</td>
-                                <td>{student.name}</td>
-                                <td>{student.status}</td>
-                            </tr>
+                            <Tr key={student._id}>
+                                <Td>{student.rollNo}</Td>
+                                <Td>{student.name}</Td>
+                                <Td>{student.enrollmentNo}</Td>
+                                <Td>{student.facultyNo}</Td>
+                                <Td>{student.status}</Td>
+                            </Tr>
                         )
                     })}
-                </tbody>
+                </Tbody>
 
-            </table>
-        </div>
+            </Table>
+        </Flex>
     )
 }
 

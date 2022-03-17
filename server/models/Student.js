@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 
-const StudentSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
 
     name:{type:String,required:true},
-    email:{type:String,required:true,unique:true},
-    phoneNo:{type:String,required:true,unique:true},
-    enrollNo:{type:String,required:true,unique:true},
+    rollNo: {type:Number,required:true},
+    enrollmentNo:{type:String,required:true,unique:true},
     facultyNo:{type:String,require:true,unique:true},
-    courseEnrolled:[],
-    username: {type:String,required:true,unique:true},
-    password: {type:String,required:true}
+    email:{type:String,required:true,unique:true},
+    phoneNo:{type:Number,required:true,unique:true},
+    courseName: {type:String,required:true},
+    courseCode: {type:String,required:true},
+    courseTeacher: {type:String,required:true},
+    status:{type:String,required:true}
+},{
+    collection:'students' 
+});
 
-},{collection:'students'});
 
-const model = mongoose.model('StudentSchema',StudentSchema);
 
-module.exports = model;
+module.exports = mongoose.model('studentSchema',studentSchema);

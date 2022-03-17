@@ -1,49 +1,43 @@
 import React from 'react';
-import styles from '../TeacherLogin/TeacherLogin.module.css';
-import { useFormik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import FormikControl from '../FormikControl/FormikControl';
 import * as Yup from 'yup'
+import {Flex, Button} from '@chakra-ui/react'
 
 function TeacherLogin() {
+  const initialValues = {
+    "email": "",
+    "password": ""
+}
 
+const onSubmit = values => {
+    console.log(values);
+}
 
-  const validationSchema = Yup.object({
+const validationSchema = Yup.object({
+  email:Yup.string().required('email is required').email('invalid email format'),
+  password: Yup.string().required('password is required')
+})
 
-    email: Yup.string().email('Invalid Email').required('Required!'),
-    password: Yup.string().required('Required!')
+return (
 
-  })
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+        {
+            (formik) => {
+                return (
+                    <Flex justifyContent='center' mt='100px' minWidth='50%'>
+                    <Form>
+                        <FormikControl control='input' label='Email' name='email' type='email'></FormikControl>
+                        <FormikControl control='input' label='Password' name='password' type='password'></FormikControl>
+                        <Button type='submit' colorScheme='teal' mt='20px' size='md'>Submit</Button>
+                    </Form>
+                    </Flex>
+                )
+            }
+        }
+    </Formik>
 
-  const formik = useFormik({
-
-    initialValues: {
-      "email": "",
-      "password": ""
-    },
-
-    onSubmit: values => {
-      console.log(values);
-    },
-
-    validationSchema
-
-  })
-
-
-
-  return (
-    <div>
-      <form className={styles.form} onSubmit={formik.handleSubmit}>
-        <label type="email" htmlFor="email">email</label>
-        <input type="email" id="email" name="email" {...formik.getFieldProps("email")}></input>
-        {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
-        <label type="text" htmlFor="password">password</label>
-        <input type="password" id="password" name="password" {...formik.getFieldProps("password")}></input>
-        {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
-        <button type="submit">submit</button>
-      </form>
-    </div>
-  )
+)
 }
 
 export default TeacherLogin
