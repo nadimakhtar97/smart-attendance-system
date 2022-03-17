@@ -1,7 +1,7 @@
 
-# Smart Attendace System FrontEnd (Under Development)
+# Smart Attendace System
 
-![alt text](https://github.com/nadimakhtar97/smart-attendance-system/blob/main/images/smart-attendance-system.png?raw=true)
+![alt text](https://github.com/nadimakhtar97/smart-attendance-system/blob/main/images/smart-attendance-system-video.webm?raw=true)
 
 
 # Using mongo-db as database
