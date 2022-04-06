@@ -26,13 +26,18 @@ function WebCam() {
                 setImage(imageSrc);
                 const response = await axios.post('http://localhost:8000/face/identify', { "base64image": imageSrc })
                 const {data} = await axios.get('http://localhost:8000/student/students')
-                if(response.data.name == -1){
+                console.log(response)
+                if(response.data.name === -2){
                     setResult(<Heading size='md'>Sorry no face detected !! please try again !!</Heading>)
-                }else{
+                }
+                else if(response.data.name === -1){
+                    setResult(<Heading size='md'>No match found in the database. Please register on the platform first.</Heading>)
+                }   
+                else{
                     setResult(<Heading size='md'> Welcome {response.data.name} to the class. Your attendance has been marked</Heading>)
                 }
-                console.log(response)
-                console.log(data)
+                // console.log(response)
+                // console.log(data)
                 setStudents(data)
                 setIsLoading(false)
             }

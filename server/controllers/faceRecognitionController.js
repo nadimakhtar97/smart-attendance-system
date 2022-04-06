@@ -10,16 +10,22 @@ exports.identify = async (req,res)=>{
     // console.log(req.body);
     const response = await axios.post('http://localhost:5000/identify', { "base64image": req.body.base64image })
     const roll = response.data.id
-    // console.log(roll)
-    if(roll){	
+    console.log("This is roll number = ",roll)
+    if(roll === -1){	
+        res.json({name : -1})
+    }else if(roll === -2){
+        res.json({name : -2})
+    }
+    else{
         var today = new Date();  
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         const student = await Student.findOneAndUpdate({"rollNo" : roll},{status:"present",inTime:time},{returnDocument:"after"})
-        console.log(student)
+        const students = await Student.find({"rollNo":roll})
+        // console.log(students)
+        console.log("This is student",student)
         res.json(student)
-    }else{
-        res.json({name : -1})
     }
+    
         
     } catch (error) {
         console.log(error)
