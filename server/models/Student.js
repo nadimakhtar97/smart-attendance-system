@@ -11,7 +11,8 @@ const studentSchema = new mongoose.Schema({
     courseName: {type:String,required:true},
     courseCode: {type:String,required:true},
     courseTeacher: {type:String,required:true},
-    status:{type:String,required:true}
+    status:{type:String,required:true},
+    inTime:{type:String,default:""}
 },{
     collection:'students' 
 });

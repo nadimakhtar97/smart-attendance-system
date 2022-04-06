@@ -47,6 +47,7 @@ function WebCam() {
     );
     return (
         <Flex justifyContent='center' alignItems='center' alignContent='space-between' direction='column'>
+            <Box borderRadius='3xl'>
             <Webcam
                 mirrored={true}
                 ref={webcamRef}
@@ -56,7 +57,8 @@ function WebCam() {
                 width={720}
                 videoConstraints={videoConstraints}
             ></Webcam>
-            <Button size='md' width='40%' m='40px' colorScheme='blue' onClick={() => { capture() }}><Text>Capture</Text></Button>
+            </Box>
+            <Button size='md' width='40%' m='40px' colorScheme="twitter" onClick={() => { capture() }}><Text>Capture</Text></Button>
             {
                 isLoading ? (
                     <VStack>
@@ -64,7 +66,7 @@ function WebCam() {
                             <Heading size='md'>Please wait face recognition is under process</Heading>
                         </Center>
                         <Center>
-                            <CircularProgress isIndeterminate color='blue.300' />
+                            <CircularProgress isIndeterminate color='twitter.500' />
                         </Center>
                     </VStack>
 

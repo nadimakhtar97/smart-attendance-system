@@ -12,27 +12,27 @@ import {
 
 function NavBar() {
   return (
-    <Flex align='baseline'>
+    <Flex alignItems='center' alignContent='center' bg="twitter.500" pt="15px" pb="15px" pr="30px" pl="30px">
       <Spacer/>
       <Spacer/>
-      <Heading color='#333'>Smart Attendance System</Heading>
+      <Heading color='#FFFFFF'>Smart Attendance System</Heading>
       <Spacer/>
       <Breadcrumb separator='-'>
         <BreadcrumbItem>
         <Link to="/">
-          <BreadcrumbLink  isCurrentPage>Home</BreadcrumbLink>
+          <BreadcrumbLink color='#FFFFFF' as='div' isCurrentPage>Home</BreadcrumbLink>
         </Link>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
         <Link to="/teacher-login">
-          <BreadcrumbLink as='div'>Teacher login</BreadcrumbLink>
+          <BreadcrumbLink color='#FFFFFF' as='div'>Teacher login</BreadcrumbLink>
         </Link>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
         <Link to="/student-login">
-          <BreadcrumbLink as='div'>Student register</BreadcrumbLink>
+          <BreadcrumbLink color='#FFFFFF' as='div'>Student register</BreadcrumbLink>
         </Link>
         </BreadcrumbItem>
       </Breadcrumb>

@@ -1,11 +1,12 @@
-var createError = require('http-errors');
+const createError = require('http-errors');
 const cors = require('cors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var indexRouter = require('./routes/index');
-var studentsRouter = require('./routes/students');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const indexRouter = require('./routes/index');
+const json2xls = require('json2xls');
+const studentsRouter = require('./routes/students');
 const faceRecognitionRouter = require('./routes/faceRecognition')
 const dbRouter = require('./routes/database')
 const mongoose = require('mongoose');
@@ -30,6 +31,7 @@ app.use(express.urlencoded({limit: '50mb', extended:false}));
 // app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(json2xls.middleware);
 
 // app.use('/', indexRouter);
 app.use('/student', studentsRouter);

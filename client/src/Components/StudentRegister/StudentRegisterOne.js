@@ -35,7 +35,7 @@ function StudentRegisterOne(props) {
                             <FormikControl control='input' label='Faculty No' name='facultyNo' type='text'></FormikControl>
                             <FormikControl control='input' label='Email' name='email' type='email'></FormikControl>
                             <FormikControl control='input' label='Phone No' name='phoneNo' type='number'></FormikControl>
-                            <Button colorScheme='teal' type='submit' mt='20px' size='md'>Next</Button>
+                            <Button size='md' width='fit-content' mt="20px" colorScheme="twitter" type='submit'>Next</Button>
                         </Form>
                         </Center>
                     )

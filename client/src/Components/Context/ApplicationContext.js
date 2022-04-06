@@ -8,9 +8,11 @@ export const ApplicationContext = createContext();
 export const ApplicationProvider = ({ children }) => {
 
     const [students, setStudents] = useState([])
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [teacherName, setTeacherName] = useState("")
 
   return (
-    <ApplicationContext.Provider value={{students,setStudents}}>
+    <ApplicationContext.Provider value={{students,setStudents,isLoggedIn,setIsLoggedIn,teacherName,setTeacherName}}>
       {children}
     </ApplicationContext.Provider>
   );
