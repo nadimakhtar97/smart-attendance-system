@@ -23,7 +23,7 @@ import FileDownload from 'js-file-download'
 
 function StudentList() {
 
-    const { students, setStudents } = useContext(ApplicationContext)
+    const { students, setStudents, teacherName } = useContext(ApplicationContext)
 
     useEffect(async () => {
         try {
@@ -53,14 +53,14 @@ function StudentList() {
 
     return (
         <VStack>
-            <Flex justifyContent="space-between" width="800px">
+            <Box justifyContent="space-between" width="800px">
                 <Box>
-                <Text >Teacher Name: Nadim Akhtar</Text>
+                <Text >Teacher Name: {teacherName}</Text>
                 </Box>
                 <Box>
                 <Text>Date: {new Date().toDateString()}</Text>
                 </Box>
-            </Flex>
+            </Box>
             <Flex direction='column' overflowY="auto" maxHeight="350px" >
                 <Table variant='striped' colorScheme="twitter" mt='20px' size="md">
                     <TableCaption color='black.500' placement='bottom'>Students Attendance Table</TableCaption>

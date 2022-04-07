@@ -7,6 +7,7 @@ import StudentRegisterOne from './StudentRegisterOne';
 import StudentRegisterTwo from './StudentRegisterTwo';
 import StudentRegisterThree from './StudentRegisterThree';
 import axios from 'axios';
+import SubmissionPage from '../SubmissionPage/SubmissionPage';
 
 function StudentRegister() {
 
@@ -43,6 +44,7 @@ function StudentRegister() {
 
         if(final){
             makeRequest(newData)
+            setCurrentStep(prev => prev + 1)
             return
         }
 
@@ -57,13 +59,11 @@ function StudentRegister() {
     const step = [
     <StudentRegisterOne next={handleNextStep} data={data} />, 
     <StudentRegisterTwo next={handleNextStep} prev={handlePrevStep} data={data} />, 
-    <StudentRegisterThree next={handleNextStep} prev={handlePrevStep} data={data} />
+    <StudentRegisterThree next={handleNextStep} prev={handlePrevStep} data={data} />,
+    <SubmissionPage></SubmissionPage>
     ]
 
     
-
-
-
 
     return (
         <Center>

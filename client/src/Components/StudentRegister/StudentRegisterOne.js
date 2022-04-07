@@ -28,7 +28,7 @@ function StudentRegisterOne(props) {
                 (formik) => {
                     return (
                         <Center>
-                        <Form style={{"width":"40vw","marginTop":"100px"}}>
+                        <Form style={{"width":"20vw","marginTop":"100px"}}>
                             <FormikControl control='input' label='Name' name='name' type='text'></FormikControl>
                             <FormikControl control='input' label='Roll No' name='rollNo' type='number'></FormikControl>
                             <FormikControl control='input' label='Enrollment No' name='enrollmentNo' type='text'></FormikControl>

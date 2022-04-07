@@ -24,7 +24,7 @@ function StudentRegisterTwo(props) {
                 (formik) => {
                     return (
                         <Center>
-                            <Form style={{ "width": "40vw", "marginTop": "100px" }}>
+                            <Form style={{ "width": "20vw", "marginTop": "100px" }}>
                                 <FormikControl control='input' label='Course Name' name='courseName' type='text'></FormikControl>
                                 <FormikControl control='input' label='Course Code' name='courseCode' type='text'></FormikControl>
                                 <FormikControl control='input' label='Course Teacher' name='courseTeacher' type='text'></FormikControl>

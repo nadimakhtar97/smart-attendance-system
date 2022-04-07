@@ -11,6 +11,7 @@ import FormikContainer from '../FormikContainer/FormikContainer';
 import { Container, Flex, Spacer, Toast, useToast } from '@chakra-ui/react';
 import axios from 'axios'
 import { ApplicationContext } from '../Context/ApplicationContext';
+import ProtectedRoutes from './ProtectedRoutes';
 
 
 
@@ -56,9 +57,11 @@ function Layout() {
       <NavBar />
       <Flex width='100%' height="92vh" direction='column' bg="gray.200" pt='30px' pl='30px' pr='30px'>
         <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/teacher-login" element={<TeacherLogin />}></Route>
-          <Route path="/student-login" element={<StudentRegister />}></Route>
+          <Route path="/" element={<TeacherLogin />}></Route>
+          <Route element={<ProtectedRoutes/>}>
+          <Route path="/home" element={<Main />}></Route>
+          <Route path="/student-register" element={<StudentRegister />}></Route>
+          </Route>
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
       </Flex>
